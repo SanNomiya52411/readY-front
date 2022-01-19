@@ -21,7 +21,12 @@ export default function BookCard (props) {
         component="img"
         image={bookInfo.book.image_url}
       />
-      <BookInfoButtons />
+      <BookInfoButtons
+        itemNumber={bookInfo.book.item_number}
+        isRead={bookInfo.book.is_read}
+        isPurchased={bookInfo.book.is_purchased}
+        isFavorited={bookInfo.book.is_favorite}
+      />
       <CardContent>
         <Typography className="cardTitle" gutterBottom variant="h6" component={'div'}>
           {bookInfo.book.title}
