@@ -27,7 +27,7 @@ export default function MyPage () {
   const [registeredBooks, setRegisteredBooks] = useState([])
 
   const getUserRegisteredBook = async () => {
-    setRegisteredBooks(await Requests.getRegisteredBooks())
+    setRegisteredBooks(await Requests.getRegisteredBookInfos())
     setRegisteredBookPending(false)
   }
 
