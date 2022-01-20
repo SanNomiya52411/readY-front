@@ -23,6 +23,7 @@ export default function LandingPage () {
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setLoading] = useState(false)
+  const [emailMessage, setEmailMessage] = useState('')
 
   const handleClickShowPassword = () => {
     setShowPassword({
@@ -38,11 +39,19 @@ export default function LandingPage () {
     setLoading(true)
     const data = new FormData(event.currentTarget)
 
-    await Requests.createUser(
+    const user = await Requests.createUser(
       data.get('email'),
       data.get('password'),
       data.get('name')
     )
+
+    console.log(user)
+
+    if (user.detail === 'The email is already used.') {
+      setEmailMessage('このEメールアドレスは既に使用されています。')
+      setLoading(false)
+      return
+    }
 
     const result = await Requests.auth(
       data.get('email'),
@@ -98,6 +107,8 @@ export default function LandingPage () {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                error={emailMessage}
+                helperText={emailMessage}
               />
               <TextField
                 margin="normal"
