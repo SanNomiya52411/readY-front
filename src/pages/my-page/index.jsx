@@ -50,7 +50,7 @@ export default function MyPage () {
 
   useEffect(() => {
     getUserRegisteredBook()
-  }, [registeredBookPending])
+  }, [])
 
   return (
     <FlexBox>
