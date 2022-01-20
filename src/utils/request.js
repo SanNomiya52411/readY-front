@@ -16,7 +16,7 @@ async function _fetch (method, endpoint, { data = {}, queryParams = {}, auth = f
     Authorization: auth ? `Bearer ${localStorage.getItem('token')}` : ''
   }
 
-  let url = `${BASEURL}${endpoint}?${new URLSearchParams(queryParams)}`
+  let url = `${BASEURL}${endpoint}`
   let request = {
     method: method,
     cache: 'no-cache',
