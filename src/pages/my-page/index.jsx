@@ -7,6 +7,7 @@ import SwipeableViews from 'react-swipeable-views'
 import { React, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import CardList from '../../components/blocks/CardList'
 import FlexBox from '../../components/atoms/FlexBox'
 import Header from '../../components/blocks/Header'
 import * as Requests from '../../utils/request'
@@ -72,7 +73,7 @@ export default function MyPage () {
           index={value}
         >
           <TabPanel value={value} index={0}>
-            { registeredBookPending ? 'Loading...' : registeredBooks }
+            { registeredBookPending ? 'Loading...' : <CardList bookInfos={registeredBooks} text="お気に入り書籍はありません。"/> }
           </TabPanel>
           <TabPanel value={value} index={1}>
             Hello No2
