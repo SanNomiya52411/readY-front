@@ -3,7 +3,7 @@ import Button from '@mui/material/Button'
 import ButtonGroup from '@mui/material/ButtonGroup'
 import Paper from '@mui/material/Paper'
 import React, { useState, useEffect } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, Link } from 'react-router-dom'
 
 import CardList from '../../components/blocks/CardList'
 import FlexBox from '../../components/atoms/FlexBox'
@@ -51,7 +51,9 @@ export default function SearchResult () {
 
   return (
     <FlexBox>
-      <Header searchBox placeholder="書籍を検索..." keyPress={keyPressed}/>
+      <Header searchBox placeholder="書籍を検索..." keyPress={keyPressed}>
+        <Button color="inherit" size="large" to="/mypage" component={Link}>マイページ</Button>
+      </Header>
       <Box sx={{ flex: 1, height: 'auto', p: 3 }} component={Paper} square>
         {searchPending ? 'けんさくちう...' : <CardList bookInfos={searchResults.books} text="検索ワードに該当する書籍が見つかりませんでした。"/>}
       </Box>
