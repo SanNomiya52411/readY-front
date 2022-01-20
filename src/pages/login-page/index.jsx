@@ -1,17 +1,37 @@
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
+import LoadingButton from '@mui/lab/LoadingButton'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Paper from '@mui/material/Paper'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import FlexBox from '../../components/atoms/FlexBox'
 import Header from '../../components/blocks/Header'
+import * as Requests from '../../utils/request'
 
 export default function LoginPage () {
+  const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState(false)
+  const [message, setMessage] = useState('')
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    setIsLoading(true)
+    const data = new FormData(event.currentTarget)
+    const result = await Requests.auth(data.get('email'), data.get('password'))
+    if (result.detail) {
+      setMessage('Eメール、もしくはパスワードが間違っています。')
+      setIsLoading(false)
+      return
+    }
+    localStorage.setItem('token', result.token)
+    localStorage.setItem('refresh_token', result.refresh_token)
+    navigate('/mypage')
+  }
   return (
     <FlexBox>
       <Header />
@@ -30,7 +50,7 @@ export default function LoginPage () {
             <Typography component="h1" variant="h5">
               ログイン
             </Typography>
-            <Box component="form" sx={{ mt: 1 }}>
+            <Box component="form" sx={{ mt: 1 }} onSubmit={handleSubmit}>
               <TextField
                 margin="normal"
                 required
@@ -49,14 +69,18 @@ export default function LoginPage () {
                 name="password"
                 autoComplete="password"
               />
-              <Button
+              <Typography component="div" sx={{ color: 'red' }}>
+                {message}
+              </Typography>
+              <LoadingButton
                 type="submit"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                loading={isLoading}
               >
                 ログイン
-              </Button>
+              </LoadingButton>
             </Box>
           </Box>
         </Grid>
