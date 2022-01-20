@@ -5,10 +5,12 @@ import PropTypes from 'prop-types'
 import Typography from '@mui/material/Typography'
 
 import { React } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import BookInfoButtons from './BookInfoButtons'
 
 export default function BookCard (props) {
+  const navigate = useNavigate()
   const { bookInfo } = props
 
   return (
@@ -28,7 +30,7 @@ export default function BookCard (props) {
         isFavorited={bookInfo.is_favorite}
       />
       <CardContent>
-        <Typography className="cardTitle" gutterBottom variant="h6" component={'div'}>
+        <Typography className="cardTitle" gutterBottom variant="h6" component={'div'} onClick={() => { navigate('/bookdetail', { state: { bookInfo: props.bookInfo } }) }}>
           {bookInfo.book.title}
         </Typography>
         <Typography component={'div'} variant="div">
