@@ -23,9 +23,9 @@ export default function BookCard (props) {
       />
       <BookInfoButtons
         itemNumber={bookInfo.book.item_number}
-        isRead={bookInfo.book.is_read}
-        isPurchased={bookInfo.book.is_purchased}
-        isFavorited={bookInfo.book.is_favorite}
+        isRead={bookInfo.is_read}
+        isPurchased={bookInfo.is_purchased}
+        isFavorited={bookInfo.is_favorite}
       />
       <CardContent>
         <Typography className="cardTitle" gutterBottom variant="h6" component={'div'}>
