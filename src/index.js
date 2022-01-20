@@ -2,6 +2,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import BookDetail from './pages/detail-page'
 import LandingPage from './pages/landing-page'
 import LoginPage from './pages/login-page'
 import MyPage from './pages/my-page'
@@ -15,6 +16,7 @@ ReactDOM.render(
       <Route path="/mypage" element={<MyPage />} />
       <Route path="/login" element={<LoginPage/>} />
       <Route path="/searchresult" element={<SearchResult/>} />
+      <Route path="/bookdetail" element={<BookDetail/>} />
     </Routes>
   </Router>,
   document.getElementById('root')
