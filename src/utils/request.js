@@ -202,7 +202,7 @@ export async function getFavoriteAuthor () {
   })
 }
 
-export async function deleteFavoriteAuthot (authorName) {
+export async function deleteFavoriteAuthor (authorName) {
   return await _delete('/api/users/authors', {
     data: {
       author: authorName
