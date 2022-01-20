@@ -11,6 +11,8 @@ import BookInfoButtons from '../../components/blocks/BookInfoButtons.jsx'
 import FlexBox from '../../components/atoms/FlexBox.jsx'
 import Header from '../../components/blocks/Header'
 import Img from '../../components/atoms/Img'
+import FavoAuthorButton from '../../components/blocks/FavoAuthorButton.jsx'
+import FavoSeriesButton from '../../components/blocks/FavoSeriesButton.jsx'
 
 function BookDetail () {
   const { state } = useLocation()
@@ -45,11 +47,16 @@ function BookDetail () {
                   isPurchased={bookInfo.is_purchased}
                   isFavorited={bookInfo.is_favorite}
                 />
-                <Typography class="description" variant="info" component="div" >
+                <Typography component="div" >
                   {bookInfo.book.description}
                 </Typography>
               </Grid>
-              <Grid item>
+              <Grid item sx={{
+                display: 'flex',
+                flexDirection: 'column'
+              }}>
+                <FavoSeriesButton bookInfo={bookInfo} />
+                <FavoAuthorButton bookInfo={bookInfo} />
                 {/* <FavoSeries bookInfo={bookInfo} /><br />
                 <FavoAuthor bookInfo={bookInfo} /> */}
               </Grid>
