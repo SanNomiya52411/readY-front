@@ -10,7 +10,7 @@ export default function FavoSeriesButton (props) {
 
   const getFavoSeriesResult = async () => {
     const result = await Requests.getFavoriteSeries()
-    if (result.indexOf(props.bookInfo.book.series_name) === -1) {
+    if (result.indexOf(props.bookInfo) === -1) {
       setFavoSeriesButton(false)
     } else {
       setFavoSeriesButton(true)
@@ -25,10 +25,10 @@ export default function FavoSeriesButton (props) {
   const onClick = async () => {
     if (favoSeriesButton) {
       // delete
-      await Requests.deleteFavoriteSeries(props.bookInfo.book.series_name)
+      await Requests.deleteFavoriteSeries(props.bookInfo)
       setFavoSeriesButton(false)
     } else {
-      await Requests.registerFavoriteSeries(props.bookInfo.book.series_name)
+      await Requests.registerFavoriteSeries(props.bookInfo)
       setFavoSeriesButton(true)
     }
     setFavoSeriesButton(!favoSeriesButton)
@@ -56,5 +56,5 @@ export default function FavoSeriesButton (props) {
 }
 
 FavoSeriesButton.propTypes = {
-  bookInfo: PropTypes.object
+  bookInfo: PropTypes.string
 }

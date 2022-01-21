@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid'
 import * as Requests from '../../utils/request'
 import AuthorCard from './AuthorCard'
 
-export default function AuthorCardList () {
+export default function AuthorCardList (props) {
   const [favoAuthorExist, setFavoAuthorExist] = useState(false)
   const [favoriteAuthors, setFavoriteAuthors] = useState([])
   const [pending, setPending] = useState(true)

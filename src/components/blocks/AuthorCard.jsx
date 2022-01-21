@@ -4,14 +4,15 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import CardActions from '@mui/material/CardActions'
 import Grid from '@mui/material/Grid'
-import Button from '@mui/material/Button'
 import CardList from './CardList'
 import PropTypes from 'prop-types'
 import * as Requests from '../../utils/request'
+import FavoAuthorButton from '../../components/blocks/FavoAuthorButton'
 
 export default function AuthorCard (props) {
   const [searchResults, setSearchResults] = React.useState([])
   const { favoriteAuthor } = props
+  console.log(props)
   const theme = createTheme({
     typography: {
       auther: {
@@ -39,13 +40,13 @@ export default function AuthorCard (props) {
         <Grid container spacing={4} alignItems="center" justify="center">
           <Grid item xs={2} >
             <ThemeProvider theme={theme}>
-              <Typography sx={{ p: 3.5 }} author variant="author" component="div">
-                作者名
+              <Typography sx={{ p: 3.5 }} variant="author" component="div">
+                著者:{favoriteAuthor}
               </Typography>
             </ThemeProvider>
             <Grid>
               <CardActions>
-                <Button sx={{ pt: 1, mt: 5 }} variant="contained">お気に入り解除</Button>
+                <FavoAuthorButton bookInfo={favoriteAuthor}/>
               </CardActions>
             </Grid>
           </Grid>
@@ -59,5 +60,5 @@ export default function AuthorCard (props) {
 }
 
 AuthorCard.propTypes = {
-  favoriteAuthor: PropTypes.array
+  favoriteAuthor: PropTypes.string
 }

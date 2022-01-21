@@ -77,7 +77,7 @@ export default function MyPage () {
             { registeredBookPending ? 'Loading...' : <CardList bookInfos={registeredBooks} text="お気に入り書籍はありません。"/> }
           </TabPanel>
           <TabPanel value={value} index={1}>
-            <AuthorCardList/>
+            <AuthorCardList bookInfos={registeredBooks}/>
           </TabPanel>
           <TabPanel value={value} index={2}>
             Hello No3

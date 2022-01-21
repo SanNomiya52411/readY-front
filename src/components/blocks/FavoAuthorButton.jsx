@@ -10,7 +10,7 @@ export default function FavoAuthorButton (props) {
 
   const getFavoAuthorResult = async () => {
     const result = await Requests.getFavoriteAuthor()
-    if (result.indexOf(props.bookInfo.book.author) === -1) {
+    if (result.indexOf(props.bookInfo) === -1) {
       setFavoAuthorButton(false)
     } else {
       setFavoAuthorButton(true)
@@ -25,11 +25,11 @@ export default function FavoAuthorButton (props) {
   const onClick = async () => {
     if (favoAuthorButton) {
       // delete
-      await Requests.deleteFavoriteAuthor(props.bookInfo.book.author)
+      await Requests.deleteFavoriteAuthor(props.bookInfo)
       setFavoAuthorButton(false)
     } else {
       console.log('お気に入り登録')
-      await Requests.registerFavoriteAuthor(props.bookInfo.book.author)
+      await Requests.registerFavoriteAuthor(props.bookInfo)
       setFavoAuthorButton(true)
     }
     setFavoAuthorButton(!favoAuthorButton)
@@ -57,5 +57,5 @@ export default function FavoAuthorButton (props) {
 }
 
 FavoAuthorButton.propTypes = {
-  bookInfo: PropTypes.object
+  bookInfo: PropTypes.string
 }

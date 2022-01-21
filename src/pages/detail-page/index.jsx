@@ -55,8 +55,8 @@ function BookDetail () {
                 display: 'flex',
                 flexDirection: 'column'
               }}>
-                <FavoSeriesButton bookInfo={bookInfo} />
-                <FavoAuthorButton bookInfo={bookInfo} />
+                <FavoSeriesButton bookInfo={bookInfo.book.series_name} />
+                <FavoAuthorButton bookInfo={bookInfo.book.author} />
                 {/* <FavoSeries bookInfo={bookInfo} /><br />
                 <FavoAuthor bookInfo={bookInfo} /> */}
               </Grid>
