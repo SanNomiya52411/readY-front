@@ -220,3 +220,21 @@ export async function search (keyword, page = 1) {
     auth: true
   })
 }
+
+export async function searchByAuthor (author) {
+  return await _get('/api/author/books', {
+    queryParams: {
+      author: author
+    },
+    auth: true
+  })
+}
+
+export async function searchBySeries (series) {
+  return await _get('/api/series/books', {
+    queryParams: {
+      series: series
+    },
+    auth: true
+  })
+}
