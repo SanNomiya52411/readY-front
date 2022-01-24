@@ -4,26 +4,26 @@ import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 
 import * as Requests from '../../utils/request'
-import AuthorCard from './AuthorCard'
+import SeriesCard from './SeriesCard'
 
-export default function AuthorCardList (props) {
-  const [favoAuthorExist, setFavoAuthorExist] = useState(false)
-  const [favoriteAuthors, setFavoriteAuthors] = useState([])
+export default function SeriesCardList (props) {
+  const [favoSeriesExist, setFavoSeriesExist] = useState(false)
+  const [favoriteSeriess, setFavoriteSeriess] = useState([])
   const [pending, setPending] = useState(true)
 
-  const getFavoAuthorResult = async () => {
-    const result = await Requests.getFavoriteAuthor()
-    setFavoriteAuthors(result)
+  const getFavoSeriesResult = async () => {
+    const result = await Requests.getFavoriteSeries()
+    setFavoriteSeriess(result)
     if (!result) {
-      setFavoAuthorExist(false)
+      setFavoSeriesExist(false)
     } else {
-      setFavoAuthorExist(true)
+      setFavoSeriesExist(true)
     }
     setPending(false)
   }
 
   useEffect(() => {
-    getFavoAuthorResult()
+    getFavoSeriesResult()
   }, [])
 
   if (pending) {
@@ -34,13 +34,13 @@ export default function AuthorCardList (props) {
         </Grid>
       </Container>
     )
-  } else if (favoAuthorExist) {
+  } else if (favoSeriesExist) {
     return (
 
       <Container sx={{ p: 0 }} maxWidth="xl">
         <Grid>
-          {favoriteAuthors.map((info, index) => (
-            <AuthorCard favoriteAuthor={info} key={index}/>
+          {favoriteSeriess.map((info, index) => (
+            <SeriesCard favoriteSeries={info} key={index}/>
           ))}
         </Grid>
       </Container>
@@ -49,7 +49,7 @@ export default function AuthorCardList (props) {
     return (
 
       <Container sx={{ p: 0 }} maxWidth="xl">
-        <h2>現在お気に入りに登録されている作者はいません</h2>
+        <h2>現在お気に入りに登録されているシリーズはありません</h2>
       </Container>
 
     )

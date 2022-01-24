@@ -7,11 +7,11 @@ import Grid from '@mui/material/Grid'
 import CardList from './CardList'
 import PropTypes from 'prop-types'
 import * as Requests from '../../utils/request'
-import FavoAuthorButton from '../../components/blocks/FavoAuthorButton'
+import FavoSeriesButton from '../../components/blocks/FavoSeriesButton'
 
-export default function AuthorCard (props) {
+export default function SeriesCard (props) {
   const [searchResults, setSearchResults] = React.useState([])
-  const { favoriteAuthor } = props
+  const { favoriteSeries } = props
   const theme = createTheme({
     typography: {
       auther: {
@@ -26,8 +26,8 @@ export default function AuthorCard (props) {
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const test = favoriteAuthor.replace('/', ' ')
-      const results = await Requests.searchByAuthor(test)
+      const test = favoriteSeries.replace('/', ' ')
+      const results = await Requests.searchBySeries(test)
       setSearchResults(results)
     }
     fetchData()
@@ -39,13 +39,13 @@ export default function AuthorCard (props) {
         <Grid container spacing={4} alignItems="center" justify="center">
           <Grid item xs={2} >
             <ThemeProvider theme={theme}>
-              <Typography sx={{ p: 3.5 }} variant="author" component="div">
-                著者:{favoriteAuthor}
+              <Typography sx={{ p: 3.5 }} variant="Series" component="div">
+                シリーズ名:{favoriteSeries}
               </Typography>
             </ThemeProvider>
             <Grid>
               <CardActions>
-                <FavoAuthorButton bookInfo={favoriteAuthor}/>
+                <FavoSeriesButton bookInfo={favoriteSeries}/>
               </CardActions>
             </Grid>
           </Grid>
@@ -58,6 +58,6 @@ export default function AuthorCard (props) {
   )
 }
 
-AuthorCard.propTypes = {
-  favoriteAuthor: PropTypes.string
+SeriesCard.propTypes = {
+  favoriteSeries: PropTypes.string
 }

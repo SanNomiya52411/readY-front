@@ -12,6 +12,7 @@ import CardList from '../../components/blocks/CardList'
 import FlexBox from '../../components/atoms/FlexBox'
 import Header from '../../components/blocks/Header'
 import * as Requests from '../../utils/request'
+import SeriesCardList from '../../components/blocks/SeriesCardList'
 import TabPanel from '../../components/atoms/TabPanel'
 
 function genProps (index) {
@@ -80,7 +81,7 @@ export default function MyPage () {
             <AuthorCardList bookInfos={registeredBooks}/>
           </TabPanel>
           <TabPanel value={value} index={2}>
-            Hello No3
+            <SeriesCardList bookInfos={registeredBooks}/>
           </TabPanel>
         </SwipeableViews>
       </Box>
