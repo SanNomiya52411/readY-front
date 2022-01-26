@@ -37,7 +37,7 @@ export default function BookCard (props) {
           著者: {bookInfo.book.author}
         </Typography>
         <Typography component={'div'} variant="div">
-          シリーズ: {bookInfo.book.series_name}
+          シリーズ: {bookInfo.book.series_name ? bookInfo.book.series_name : 'なし'}
         </Typography>
       </CardContent>
     </Card>

@@ -17,55 +17,104 @@ import FavoSeriesButton from '../../components/blocks/FavoSeriesButton.jsx'
 function BookDetail () {
   const { state } = useLocation()
   const { bookInfo } = state
-  return (
-    <FlexBox>
-      <Header searchBox placeholder="書籍検索">
-        <Button color="inherit" size="large" to="/mypage" component={Link}>マイページへ</Button>
-      </Header>
-      <Box sx={{ flex: 1, height: 'auto', p: 3 }} component={Paper} square>
-        <Grid container spacing={4}>
-          <Grid item>
-            <ButtonBase sx={{ width: 200, height: 200 }}>
-              <Img alt="表紙" src={bookInfo.book.image_url} />
-            </ButtonBase>
-          </Grid>
-          <Grid item xs={12} sm container>
-            <Grid item xs container direction="column" spacing={1}>
-              <Grid item xs>
-                <Typography sx={{ fontSize: 30 }} component="div">
-                  {bookInfo.book.title}
-                </Typography>
-                <Typography sx={{ fontSize: 20 }} component="div">
-                  シリーズ名：{bookInfo.book.series_name}
-                </Typography>
-                <Typography sx={{ fontSize: 20 }} component="div">
-                  著者：{bookInfo.book.author}
-                </Typography>
-                <BookInfoButtons
-                  itemNumber={bookInfo.book.item_number}
-                  isRead={bookInfo.is_read}
-                  isPurchased={bookInfo.is_purchased}
-                  isFavorited={bookInfo.is_favorite}
-                />
-                <Typography component="div" >
-                  {bookInfo.book.description}
-                </Typography>
-              </Grid>
-              <Grid item sx={{
-                display: 'flex',
-                flexDirection: 'column'
-              }}>
-                <FavoSeriesButton bookInfo={bookInfo.book.series_name} />
-                <FavoAuthorButton bookInfo={bookInfo.book.author} />
-                {/* <FavoSeries bookInfo={bookInfo} /><br />
-                <FavoAuthor bookInfo={bookInfo} /> */}
+  console.log(bookInfo.book.series_name)
+
+  if (bookInfo.book.series_name) {
+    return (
+      <FlexBox>
+        <Header searchBox placeholder="書籍検索">
+          <Button color="inherit" size="large" to="/mypage" component={Link}>マイページへ</Button>
+        </Header>
+        <Box sx={{ flex: 1, height: 'auto', p: 3 }} component={Paper} square>
+          <Grid container spacing={4}>
+            <Grid item>
+              <ButtonBase sx={{ width: 200, height: 200 }}>
+                <Img alt="表紙" src={bookInfo.book.image_url} />
+              </ButtonBase>
+            </Grid>
+            <Grid item xs={12} sm container>
+              <Grid item xs container direction="column" spacing={1}>
+                <Grid item xs>
+                  <Typography sx={{ fontSize: 30 }} component="div">
+                    {bookInfo.book.title}
+                  </Typography>
+                  <Typography sx={{ fontSize: 20 }} component="div">
+                    シリーズ名：{bookInfo.book.series_name}
+                  </Typography>
+                  <Typography sx={{ fontSize: 20 }} component="div">
+                    著者：{bookInfo.book.author}
+                  </Typography>
+                  <BookInfoButtons
+                    itemNumber={bookInfo.book.item_number}
+                    isRead={bookInfo.is_read}
+                    isPurchased={bookInfo.is_purchased}
+                    isFavorited={bookInfo.is_favorite}
+                  />
+                  <Typography component="div" >
+                    {bookInfo.book.description}
+                  </Typography>
+                </Grid>
+                <Grid item sx={{
+                  display: 'flex',
+                  flexDirection: 'column'
+                }}>
+                  <FavoSeriesButton bookInfo={bookInfo.book.series_name} />
+                  <FavoAuthorButton bookInfo={bookInfo.book.author} />
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </Box>
-    </FlexBox>
-  )
+        </Box>
+      </FlexBox>
+    )
+  } else {
+    return (
+      <FlexBox>
+        <Header searchBox placeholder="書籍検索">
+          <Button color="inherit" size="large" to="/mypage" component={Link}>マイページへ</Button>
+        </Header>
+        <Box sx={{ flex: 1, height: 'auto', p: 3 }} component={Paper} square>
+          <Grid container spacing={4}>
+            <Grid item>
+              <ButtonBase sx={{ width: 200, height: 200 }}>
+                <Img alt="表紙" src={bookInfo.book.image_url} />
+              </ButtonBase>
+            </Grid>
+            <Grid item xs={12} sm container>
+              <Grid item xs container direction="column" spacing={1}>
+                <Grid item xs>
+                  <Typography sx={{ fontSize: 30 }} component="div">
+                    {bookInfo.book.title}
+                  </Typography>
+                  <Typography sx={{ fontSize: 20 }} component="div">
+                    シリーズ名：{bookInfo.book.series_name ? bookInfo.book.series_name : 'なし'}
+                  </Typography>
+                  <Typography sx={{ fontSize: 20 }} component="div">
+                    著者：{bookInfo.book.author}
+                  </Typography>
+                  <BookInfoButtons
+                    itemNumber={bookInfo.book.item_number}
+                    isRead={bookInfo.is_read}
+                    isPurchased={bookInfo.is_purchased}
+                    isFavorited={bookInfo.is_favorite}
+                  />
+                  <Typography component="div" >
+                    {bookInfo.book.description}
+                  </Typography>
+                </Grid>
+                <Grid item sx={{
+                  display: 'flex',
+                  flexDirection: 'column'
+                }}>
+                  <FavoAuthorButton bookInfo={bookInfo.book.author} />
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Box>
+      </FlexBox>
+    )
+  }
 }
 
 export default BookDetail

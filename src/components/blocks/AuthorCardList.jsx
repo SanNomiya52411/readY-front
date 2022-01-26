@@ -28,6 +28,7 @@ export default function AuthorCardList (props) {
 
   if (pending) {
     return (
+
       <Container sx={{ p: 0 }} maxWidth="xl">
         <Grid>
           Loading...
@@ -40,14 +41,13 @@ export default function AuthorCardList (props) {
       <Container sx={{ p: 0 }} maxWidth="xl">
         <Grid>
           {favoriteAuthors.map((info, index) => (
-            <AuthorCard favoriteAuthor={info} key={index}/>
+            <AuthorCard favoriteAuthor={info} key={index} />
           ))}
         </Grid>
       </Container>
     )
   } else {
     return (
-
       <Container sx={{ p: 0 }} maxWidth="xl">
         <h2>現在お気に入りに登録されている作者はいません</h2>
       </Container>

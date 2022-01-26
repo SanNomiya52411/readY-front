@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Box from '@mui/material/Box'
+import Paper from '@mui/material/Paper'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import CardActions from '@mui/material/CardActions'
@@ -14,7 +14,7 @@ export default function SeriesCard (props) {
   const { favoriteSeries } = props
   const theme = createTheme({
     typography: {
-      auther: {
+      Series: {
         fontSize: 20,
         flex: 1
       },
@@ -35,25 +35,23 @@ export default function SeriesCard (props) {
 
   return (
     <Grid>
-      <Box mt={1} sx={{ p: 'auto', border: 1 }}>
+      <Paper sx={{ my: 5 }} elevation={5}>
+        <ThemeProvider theme={theme}>
+          <Typography sx={{ p: 3.5, fontsize: 35 }} variant="Series" component="div">
+            {favoriteSeries}
+          </Typography>
+        </ThemeProvider>
+        <Grid>
+          <CardActions>
+            <FavoSeriesButton bookInfo={favoriteSeries} />
+          </CardActions>
+        </Grid>
         <Grid container spacing={4} alignItems="center" justify="center">
-          <Grid item xs={2} >
-            <ThemeProvider theme={theme}>
-              <Typography sx={{ p: 3.5 }} variant="Series" component="div">
-                シリーズ名:{favoriteSeries}
-              </Typography>
-            </ThemeProvider>
-            <Grid>
-              <CardActions>
-                <FavoSeriesButton bookInfo={favoriteSeries}/>
-              </CardActions>
-            </Grid>
-          </Grid>
           <Grid item sx={{ m: 1 }} sm container spacing={2}>
-            <CardList bookInfos={searchResults} text="検索ワードに該当する書籍が見つかりませんでした。"/>
+            <CardList bookInfos={searchResults} text="検索ワードに該当する書籍が見つかりませんでした。" />
           </Grid>
         </Grid>
-      </Box>
+      </Paper>
     </Grid>
   )
 }
