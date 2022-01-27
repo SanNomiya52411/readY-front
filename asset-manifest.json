@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/readY-front/static/js/main.f1a0ff1e.chunk.js",
-    "main.js.map": "/readY-front/static/js/main.f1a0ff1e.chunk.js.map",
+    "main.js": "/readY-front/static/js/main.1bc7365c.chunk.js",
+    "main.js.map": "/readY-front/static/js/main.1bc7365c.chunk.js.map",
     "runtime-main.js": "/readY-front/static/js/runtime-main.c8133877.js",
     "runtime-main.js.map": "/readY-front/static/js/runtime-main.c8133877.js.map",
     "static/js/2.e7cdd993.chunk.js": "/readY-front/static/js/2.e7cdd993.chunk.js",
@@ -12,6 +12,6 @@
   "entrypoints": [
     "static/js/runtime-main.c8133877.js",
     "static/js/2.e7cdd993.chunk.js",
-    "static/js/main.f1a0ff1e.chunk.js"
+    "static/js/main.1bc7365c.chunk.js"
   ]
 }
